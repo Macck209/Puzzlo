@@ -9,12 +9,12 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.ImageButton;
 
-public class MainActivity extends AppCompatActivity {
+public class ScoreboardActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_scoreboard);
 
         // Hide the action bar
         getSupportActionBar().hide();
@@ -34,33 +34,16 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-        ImageButton settingsButton = findViewById(R.id.imageButton_settingsBtn);
-        ImageButton scoreboardButton = findViewById(R.id.imageButton_scoreboardBtn);
-        ImageButton playButton = findViewById(R.id.imageButton_playBtn);
+        ImageButton returnButton = findViewById(R.id.return_btn);
 
-        settingsButton.setOnClickListener(new View.OnClickListener() {
+        returnButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, SettingsActivity.class);
-                startActivity(intent);
-            }
-        });
-        scoreboardButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, ScoreboardActivity.class);
-                startActivity(intent);
-            }
-        });
-        playButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, PreGameActivity.class);
+                Intent intent = new Intent(ScoreboardActivity.this, MainActivity.class);
                 startActivity(intent);
             }
         });
     }
-
 
     private void hideNavigationBar()
     {

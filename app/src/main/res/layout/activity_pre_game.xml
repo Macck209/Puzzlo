@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background_gradient"
+    tools:context=".PreGameActivity">
+
+    <ImageButton
+        android:id="@+id/return_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:background="@android:color/transparent"
+        android:outlineProvider="none"
+        android:scaleType="fitCenter"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/img_back_btn" />
+
+    <ImageView
+        android:id="@+id/imageView_moon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="48dp"
+        android:scaleType="fitCenter"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/moon"
+        tools:ignore="ContentDescription,MissingConstraints" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="405dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="370dp"
+        android:text="Enter your nickname:"
+        android:textAlignment="center"
+        android:textColor="#003A47"
+        android:textSize="38sp"
+        app:fontFamily="@font/baloo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/imageView_moon" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="340dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="0dp"
+        android:text="Nickname must be between 4-8 characters long"
+        android:textAlignment="center"
+        android:textColor="#003A47"
+        android:textSize="20sp"
+        app:fontFamily="@font/baloo"
+        android:lineSpacingMultiplier="0.6"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+    <ImageButton
+        android:id="@+id/go_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="724dp"
+        android:background="@android:color/transparent"
+        android:outlineProvider="none"
+        android:scaleType="fitCenter"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/imageView_moon"
+        app:srcCompat="@drawable/img_go_btn" />
+
+    <EditText
+        android:id="@+id/nickname_input"
+        android:layout_width="302dp"
+        android:layout_height="68dp"
+        android:layout_marginTop="32dp"
+        android:background="@drawable/img_nick_input_background"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Player"
+        android:textAlignment="center"
+        android:textColor="#5D757A"
+        android:textSize="40sp"
+        app:fontFamily="@font/baloo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
