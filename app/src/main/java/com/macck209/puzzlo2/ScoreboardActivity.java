@@ -3,11 +3,15 @@ package com.macck209.puzzlo2;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.ImageButton;
+import android.widget.TextView;
+
+import org.w3c.dom.Text;
 
 public class ScoreboardActivity extends AppCompatActivity {
 
@@ -16,43 +20,48 @@ public class ScoreboardActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_scoreboard);
 
-        // Hide the action bar
+        //From xml
+        ImageButton returnButton = findViewById(R.id.return_btn);
+        TextView scoreboard = findViewById(R.id.scoreboard_scores);
+        TextView nicknames = findViewById(R.id.scoreboard_names);
+        //Preferences
+        SharedPreferences preferences = getSharedPreferences("MyPrefs", MODE_PRIVATE);
+        String scores = preferences.getString("scoreboard", "0,0,0,0,0,0,0,0,0,0");
+        String names = preferences.getString("nicknames", "---,---,---,---,---,---,---,---,---,---");
+
+
+        //Hiding navigation stuff & gui bars
         getSupportActionBar().hide();
-        // Hide the status bar
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        // Hide the navigation bar
         getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_HIDE_NAVIGATION | View.SYSTEM_UI_FLAG_IMMERSIVE);
 
-        // Set up the listener to re-hide the navigation bar when it becomes visible
-        getWindow().getDecorView().setOnSystemUiVisibilityChangeListener(new View.OnSystemUiVisibilityChangeListener() {
-            @Override
-            public void onSystemUiVisibilityChange(int visibility) {
-                if ((visibility & View.SYSTEM_UI_FLAG_HIDE_NAVIGATION) == 0) {
-                    hideNavigationBar();
-                }
+        loadScoreboard(scoreboard,scores,nicknames,names);
+
+        //Phone GUI bars detection
+        getWindow().getDecorView().setOnSystemUiVisibilityChangeListener(visibility -> {
+            if ((visibility & View.SYSTEM_UI_FLAG_HIDE_NAVIGATION) == 0) {
+                hideNavigationBar();
             }
         });
 
-
-        ImageButton returnButton = findViewById(R.id.return_btn);
-
-        returnButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(ScoreboardActivity.this, MainActivity.class);
-                startActivity(intent);
-            }
+        //Return to main menu
+        returnButton.setOnClickListener(v -> {
+            Intent intent = new Intent(ScoreboardActivity.this, MainActivity.class);
+            startActivity(intent);
         });
     }
 
+    private void loadScoreboard(TextView scoreboard, String scores,TextView nicknames,String names){
+        String formattedScores = scores.replace(",", "\n");
+        scoreboard.setText(formattedScores);
+        String formattedNames = names.replace(",", "\n");
+        nicknames.setText(formattedNames);
+    }
+
+    //Re-hiding phones navigation bars
     private void hideNavigationBar()
     {
         Handler handler = new Handler();
-        handler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_HIDE_NAVIGATION | View.SYSTEM_UI_FLAG_IMMERSIVE);
-            }
-        }, 3000);
+        handler.postDelayed(() -> getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_HIDE_NAVIGATION | View.SYSTEM_UI_FLAG_IMMERSIVE), 3000);
     }
 }

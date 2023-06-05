@@ -30,4 +30,18 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/img_rectangle_1" />
 
+    <GridLayout
+        android:id="@+id/puzzleGrid"
+        android:layout_width="360dp"
+        android:layout_height="360dp"
+        android:columnCount="4"
+        android:rowCount="4"
+        app:layout_constraintBottom_toBottomOf="@+id/rectangle_background"
+        app:layout_constraintEnd_toEndOf="@+id/rectangle_background"
+        app:layout_constraintStart_toStartOf="@+id/rectangle_background"
+        app:layout_constraintTop_toTopOf="@+id/rectangle_background">
+
+    </GridLayout>
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -57,9 +57,9 @@ public class PreGameActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String nickname = nicknameInput.getText().toString();
-                if(nickname.length()>3 && nickname.length()<9) {
+                if(nickname.length()>3 && nickname.length()<9 && !nickname.contains(",")) {
                     SharedPreferences.Editor editor = preferences.edit();
-                    editor.putString("currentNickname",currentNickname);
+                    editor.putString("currentNickname",nickname);
                     editor.apply();
 
                     if(sounds) {

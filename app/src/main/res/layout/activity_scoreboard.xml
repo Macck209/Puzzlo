@@ -29,4 +29,34 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/img_top_scores" />
 
+    <LinearLayout
+        android:layout_width="360dp"
+        android:layout_height="720dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/label_top_scores">
+
+        <TextView
+            android:id="@+id/scoreboard_names"
+            android:layout_width="200dp"
+            android:layout_height="720dp"
+            android:gravity="center_vertical|start"
+            android:text="aaa"
+            android:textColor="#003A47"
+            android:textSize="38sp"
+            app:fontFamily="@font/baloo" />
+
+        <TextView
+            android:id="@+id/scoreboard_scores"
+            android:layout_width="160dp"
+            android:layout_height="720dp"
+            android:gravity="center_vertical|end"
+            android:text="aaa"
+            android:textColor="#003A47"
+            android:textSize="38sp"
+            app:fontFamily="@font/baloo" />
+    </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
